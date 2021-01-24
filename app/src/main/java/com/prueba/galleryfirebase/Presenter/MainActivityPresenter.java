@@ -3,9 +3,12 @@ package com.prueba.galleryfirebase.Presenter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.prueba.galleryfirebase.Interactor.MainActivityInteractor;
 import com.prueba.galleryfirebase.Interfaces.Contract;
+
+import java.util.ArrayList;
 
 public class MainActivityPresenter implements Contract.Presenter, Contract.onOperationListener {
 
@@ -18,18 +21,18 @@ public class MainActivityPresenter implements Contract.Presenter, Contract.onOpe
     }
 
     @Override
-    public void createNewPicture(FirebaseStorage firebaseStorage, Uri filePath) {
-        mainActivityInteractor.performCreatePicture(firebaseStorage, filePath);
+    public void createNewPicture(FirebaseStorage firebaseStorage, FirebaseFirestore firebaseFirestore,Uri filePath) {
+        mainActivityInteractor.performCreatePicture(firebaseStorage, firebaseFirestore,filePath);
     }
 
     @Override
-    public void createNewPicture(FirebaseStorage firebaseStorage, Bitmap bitmap) {
-        mainActivityInteractor.performCreatePicture(firebaseStorage, bitmap);
+    public void createNewPicture(FirebaseStorage firebaseStorage, FirebaseFirestore firebaseFirestore,Bitmap bitmap) {
+        mainActivityInteractor.performCreatePicture(firebaseStorage, firebaseFirestore,bitmap);
     }
 
     @Override
-    public void readPictures(FirebaseStorage firebaseStorage) {
-
+    public void readPictures(FirebaseFirestore firebaseFirestore) {
+        mainActivityInteractor.performReadPictures(firebaseFirestore);
     }
 
     @Override
@@ -52,5 +55,10 @@ public class MainActivityPresenter implements Contract.Presenter, Contract.onOpe
     public void onEnd() {
         view.onProcessEnd();
 
+    }
+
+    @Override
+    public void onRead(ArrayList<String> urls) {
+        view.onPictureRead(urls);
     }
 }
