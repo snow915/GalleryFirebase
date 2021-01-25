@@ -15,12 +15,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.prueba.galleryfirebase.Interfaces.Contract;
 import com.prueba.galleryfirebase.Presenter.MainActivityPresenter;
 import com.prueba.galleryfirebase.R;
-import com.prueba.galleryfirebase.Utils.CreatePlayerDialog;
+import com.prueba.galleryfirebase.Utils.CreatePictureDialog;
 import com.prueba.galleryfirebase.Utils.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements CreatePlayerDialog.createPlayerDialogListener, Contract.View {
+public class MainActivity extends AppCompatActivity implements CreatePictureDialog.createPictureDialogListener, Contract.View {
 
     private FirebaseStorage storage;
     private FirebaseFirestore firebaseFirestore;
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements CreatePlayerDialo
     }
 
     private void openDialog() {
-        CreatePlayerDialog createPlayerDialog = new CreatePlayerDialog();
-        createPlayerDialog.show(getSupportFragmentManager(), "create dialog");
+        CreatePictureDialog createPictureDialog = new CreatePictureDialog();
+        createPictureDialog.show(getSupportFragmentManager(), "create dialog");
     }
 
     @Override

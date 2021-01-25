@@ -27,11 +27,11 @@ import com.prueba.galleryfirebase.R;
 
 import java.io.IOException;
 
-public class CreatePlayerDialog extends AppCompatDialogFragment {
+public class CreatePictureDialog extends AppCompatDialogFragment {
 
     private ImageView img_selected;
     private Button mSaveBtn, mGalleryBtn, mCameraBtn;
-    private createPlayerDialogListener mListerner;
+    private createPictureDialogListener mListerner;
     private final int PICK_IMAGE_REQUEST = 1;
     private final int CAMERA_REQUEST_CODE = 2;
     public static final int CAMERA_PERM_CODE = 3;
@@ -142,10 +142,10 @@ public class CreatePlayerDialog extends AppCompatDialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListerner = (createPlayerDialogListener) context;
+        mListerner = (createPictureDialogListener) context;
     }
 
-    public interface createPlayerDialogListener {
+    public interface createPictureDialogListener {
         void savePlayer(Uri filepath);
         void savePlayer(Bitmap bitmap);
     }
